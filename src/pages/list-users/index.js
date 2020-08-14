@@ -1,17 +1,14 @@
 import React from 'react';
+import { TextField, Input } from '@material-ui/core';
+import userImg from '../../assets/users.svg';
 import { Link } from 'react-router-dom';
-import ListImg from '../../assets/list.svg'
 
-export default function ListWorkstation() {
+export default function ListUsers() {
   return(
     <div className="App-list">
-    <header>
-      <Link className="button-link" to="/admin"><button type="submit">Admin</button></Link>
-      <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
-    </header>
-      <img src={ListImg} alt="Workstations" width="320"/>
-      <h1>Workstations disponíveis:</h1>
-      <span>Agende seu horário clicando no nome da Workstation desejada.</span>
+    <img src={userImg} alt="Workstations" width="320"/>
+    <h1>Administrar usuários</h1>
+    <span>Acesso excludivo do administrador.</span>
       <div className="item-container">
         <ul>
         <div className="row">
@@ -36,8 +33,7 @@ export default function ListWorkstation() {
           </div>
         </ul>
       </div>
-      <span>Precisa organizar uma reunião? Confira nossas salas.</span>
-      <Link className="small-btn" to="/reunions"><button type="submit">Ver salas de reunião</button></Link>
+      <Link className="small-btn" to="/"><button type="submit">Retornar à página de login</button></Link>
     </div>
   )
 }

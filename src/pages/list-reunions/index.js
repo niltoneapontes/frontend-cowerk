@@ -19,6 +19,10 @@ import ReunionImg from '../../assets/reunion.svg'
 export default function ListReunions() {
   return(
     <div className="App-list">
+    <header>
+    <Link className="button-link" to="/admin"><button type="submit">Admin</button></Link>
+    <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
+    </header>
       <img src={ReunionImg} alt="Workstations" width="320"/>
       <h1>Salas de reunião disponíveis:</h1>
       <span>Agende seu horário clicando no nome da sala desejada.</span>

@@ -3,9 +3,13 @@ import { TextField, Input } from '@material-ui/core';
 import scheduleImg from '../../assets/schedule.svg';
 import { Link } from 'react-router-dom';
 
-export default function Signup(){
+export default function Signup() {
   return(
     <div className="App">
+    <header>
+      <Link className="button-link" to="/admin"><button type="submit">Admin</button></Link>
+      <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
+    </header>
       <div className="container">
         <h1>Faça seu agendamento</h1>
         <form action="" className="form-container">
