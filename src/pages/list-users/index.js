@@ -1,35 +1,75 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { TextField, Input } from '@material-ui/core';
 import userImg from '../../assets/users.svg';
 import { Link } from 'react-router-dom';
 
+import api from '../../services/api'
+
 export default function ListUsers() {
+
+  const [users, setUsers] = useState([]);
+
+  api.get('/users/').then(res => setUsers(res.data)).catch(err => console.error(err))
+
+  async function handleDelete(id){
+    try{
+        await api.delete(`/users/${id}`)
+        alert(`Usuário deletado com sucesso!`);
+    }
+    catch(err){
+        alert('Erro ao tentar deletar, tente novamente');
+    }
+  }
+
   return(
     <div className="App-list">
+    <header>
+      <Link className="button-link" to="/workstation/create"><button type="submit">Criar Workstation</button></Link>
+      <Link className="button-link" to="/reunion/create"><button type="submit">Criar Sala de Reuniões</button></Link>
+      <Link className="button-link" to="/signup"><button type="submit">Criar Usuário</button></Link>
+      <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
+    </header>
     <img src={userImg} alt="Workstations" width="320"/>
     <h1>Administrar usuários</h1>
-    <span>Acesso excludivo do administrador.</span>
+    <span>Acesso exclusivo do administrador.</span>
       <div className="item-container">
         <ul>
         <div className="row">
+        {users ? users.map(user => {
+          return(
           <li className="col reunion-li">
-            <h2><Link to="/schedule">Workstation 01</Link></h2>
+            <h2><Link to="/admin">{user.name}</Link></h2>
+            <h2><Link to="/admin">{user.email}</Link></h2>
+            <p>{user.birthdate}</p>
+            <button onClick={() => handleDelete(user._id)}>Deletar usuário</button>
+          </li>
+        )
+        })
+
+        :
+        (<>
+        <div className="row">
+          <li className="col reunion-li">
+            <h2><Link to="/admin">Nilton Pontes</Link></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ex ut turpis accumsan lacinia sit amet sed ex. </p>
           </li>
           <li className="col reunion-li">
-            <h2><Link to="/schedule">Workstation 02</Link></h2>
+            <h2><Link to="/admin">Tairine Ellen</Link></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ex ut turpis accumsan lacinia sit amet sed ex. </p>
           </li>
         </div>
         <div className="row">
           <li className="col reunion-li">
-            <h2><Link to="/schedule">Workstation 03</Link></h2>
+            <h2><Link to="/admin">João Felipe</Link></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ex ut turpis accumsan lacinia sit amet sed ex. </p>
           </li>
           <li className="col reunion-li">
-            <h2><Link to="/schedule">Workstation 04</Link></h2>
+            <h2><Link to="/admin">Raquel Santos</Link></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ex ut turpis accumsan lacinia sit amet sed ex. </p>
           </li>
+        </div>
+          </>
+        )}
           </div>
         </ul>
       </div>

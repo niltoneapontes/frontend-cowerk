@@ -181,10 +181,15 @@ ul{
 }
 
 .reunion-li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--gray);
   border-radius: 8px;
   margin: 32px;
   padding: 32px;
+  width: 80%;
 }
 
 .reunion-li:hover{

@@ -1,15 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TextField } from '@material-ui/core';
 import homeimg from '../../assets/home.svg';
 import { Link } from 'react-router-dom';
 
+import api from '../../services/api';
+
 export default function CreateWorkstation(){
+
+  const[name, setName] = useState('');
+  const[description, setDescription] = useState('');
+
+  async function handleRegister(e){
+        e.preventDefault();
+
+          const data = {
+              name,
+              description,
+      };
+
+      try{
+
+          const response = await api.post('/workstations', data);
+          alert(`Workstation cadastrada com sucesso!`);
+      }
+      catch(err){
+          alert('Erro no cadastro, tente novamente');
+      }
+
+}
+
   return(
     <div className="App">
       <div className="container">
         <h1>Crie uma nova Workstation</h1>
-        <form action="" className="form-container">
-          <TextField id="outlined-basic" className="inputs" label="Nome da workstation" variant="outlined" type="text" required/>
+        <form action="" onSubmit={handleRegister} className="form-container">
+          <TextField id="outlined-basic" className="inputs" label="Nome da workstation" variant="outlined" type="text" required
+          value={name}
+          onChange={e => setName(e.target.value)}/>
           <TextField
             id="outlined-multiline-static"
             label="Descrição"
@@ -18,7 +45,10 @@ export default function CreateWorkstation(){
             rows={4}
             variant="outlined"
             required
-          />          <Link className="button-link" to="/"><button type="submit">Cadastrar</button></Link>
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+          />
+          <button type="submit">Cadastrar</button>
           <Link to="/">Entrar</Link>
         </form>
       </div>

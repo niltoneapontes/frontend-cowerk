@@ -8,6 +8,7 @@ export default function CreateReunion(){
     <div className="App">
       <div className="container">
         <h1>Crie uma nova Sala de Reuniões</h1>
+        <h2>ATENÇÃO: Serviço temporariamente indisponível.</h2>
         <form action="" className="form-container">
           <TextField id="outlined-basic" className="inputs" label="Nome da Sala" variant="outlined" type="text" required/>
           <TextField

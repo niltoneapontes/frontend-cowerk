@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ListImg from '../../assets/list.svg'
 
+import api from '../../services/api';
+
 export default function ListWorkstation() {
+
+  const [workstations, setWorkstations] = useState([]);
+
+  api.get('/workstations').then(res => setWorkstations(res.data)).catch(err => console.error(err))
+
+  async function handleDelete(id){
+
+    try{
+        await api.delete(`/workstations/${id}`)
+        alert(`Workstation deletada com sucesso!`);
+    }
+    catch(err){
+        alert('Erro ao tentar deletar, tente novamente');
+    }
+  }
+
   return(
     <div className="App-list">
     <header>
-      <Link className="button-link" to="/admin"><button type="submit">Admin</button></Link>
       <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
     </header>
       <img src={ListImg} alt="Workstations" width="320"/>
@@ -15,15 +32,16 @@ export default function ListWorkstation() {
       <div className="item-container">
         <ul>
         <div className="row">
+        {workstations ? workstations.map(workstation => {
+          return(
           <li className="col reunion-li">
-            <h2><Link to="/schedule">Workstation 01</Link></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ex ut turpis accumsan lacinia sit amet sed ex. </p>
+            <h2><Link to="/schedule">{workstation.name}</Link></h2>
+            <p>{workstation.description}</p>
+            <button onClick={() => handleDelete(workstation._id)}>Excluir</button>
           </li>
-          <li className="col reunion-li">
-            <h2><Link to="/schedule">Workstation 02</Link></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ex ut turpis accumsan lacinia sit amet sed ex. </p>
-          </li>
-        </div>
+        )})
+        :
+        (
         <div className="row">
           <li className="col reunion-li">
             <h2><Link to="/schedule">Workstation 03</Link></h2>
@@ -34,6 +52,8 @@ export default function ListWorkstation() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ex ut turpis accumsan lacinia sit amet sed ex. </p>
           </li>
           </div>
+        )}
+        </div>
         </ul>
       </div>
       <span>Precisa organizar uma reunião? Confira nossas salas.</span>
