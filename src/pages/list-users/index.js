@@ -39,11 +39,17 @@ export default function ListUsers() {
       { isAdmin ?
         (
           <div className="App-list">
-          <header>
-            <Link className="button-link" to="/workstation/create"><button type="submit">Criar Workstation</button></Link>
-            <Link className="button-link" to="/reunion/create"><button type="submit">Criar Sala de Reuniões</button></Link>
-            <Link className="button-link" to="/signup"><button type="submit">Criar Usuário</button></Link>
+          <header className="header-admin">
+            <div style={{display: "flex"}}>
+              <Link className="button-link" to="/reunions"><button type="submit">Ver salas de reunião</button></Link>
+              <Link className="button-link" to="/workstations"><button type="submit">Ver Workstations</button></Link>
+            </div>
+            <div style={{display: "flex"}}>
+              <Link className="button-link" to="/workstation/create"><button type="submit">Criar Workstation</button></Link>
+              <Link className="button-link" to="/reunion/create"><button type="submit">Criar Sala de Reuniões</button></Link>
+              <Link className="button-link" to="/signup"><button type="submit">Criar Usuário</button></Link>
             <button type="submit" onClick={handleLogout}>Logout</button>
+            </div>
           </header>
           <img src={userImg} alt="Workstations" width="320"/>
           <h1>Administrar usuários</h1>

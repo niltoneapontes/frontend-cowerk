@@ -1,10 +1,17 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 import homeimg from '../../assets/home.svg';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function CreateReunion(){
+
+  const isAdmin = localStorage.getItem('isAdmin');
+  const history = useHistory();
+
   return(
+  <div>
+  { isAdmin ?
+    (
     <div className="App">
       <div className="container">
         <h1>Crie uma nova Sala de Reuniões</h1>
@@ -25,5 +32,12 @@ export default function CreateReunion(){
       </div>
       <img src={homeimg} alt="CoWerk Logo" width="540"/>
     </div>
+    )
+    : (
+      alert('Você não é administrador.'),
+      history.push('/')
+    )
+  }
+  </div>
   )
 }

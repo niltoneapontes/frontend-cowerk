@@ -33,7 +33,7 @@ export default function Signup(){
 
       }
       catch(err){
-          alert('Erro no cadastro, tente novamente');
+          alert('Usuário não está disponível');
       }
 
 }

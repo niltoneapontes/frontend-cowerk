@@ -26,18 +26,15 @@ export default function Signin(){
       password
     }
 
-    try{
-        await api.post('/', data).then(res =>
+        await api.post('/', data)
+          .then(res =>
           res.data.isAdmin ?
           (
             localStorage.setItem('isAdmin', res.data.isAdmin),
             history.push('/admin')
           )
-          : history.push('/reunions'));
-    }
-    catch(err){
-        alert('Usuário e/ou senha incorretos. 😐');
-    }
+          : history.push('/reunions'))
+          .catch(err => alert('Usuário e/ou senha incorretos. 😐'))
   }
 
   return(

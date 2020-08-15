@@ -8,6 +8,7 @@ export default function ListWorkstation() {
 
   const [workstations, setWorkstations] = useState([]);
   const history = useHistory();
+  const isAdmin = localStorage.getItem('isAdmin');
 
   api.get('/workstations').then(res => setWorkstations(res.data)).catch(err => console.error(err))
 
@@ -48,7 +49,7 @@ export default function ListWorkstation() {
           <li className="col reunion-li">
             <h2><Link to="/schedule">{workstation.name}</Link></h2>
             <p>{workstation.description}</p>
-            <button onClick={() => handleDelete(workstation._id)}>Excluir</button>
+            { isAdmin ? <button onClick={() => handleDelete(workstation._id)}>Excluir</button> : ''}
           </li>
         )})
         :
