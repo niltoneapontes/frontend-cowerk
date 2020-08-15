@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ReunionImg from '../../assets/reunion.svg'
+import { Link, useHistory } from 'react-router-dom';
+import ReunionImg from '../../assets/reunion.svg';
 
 // <ul>
 //   <li className="item">
@@ -17,10 +17,23 @@ import ReunionImg from '../../assets/reunion.svg'
 
 
 export default function ListReunions() {
+
+  const history = useHistory();
+
+  async function handleLogout(){
+    try{
+      localStorage.clear();
+      history.push('/')
+    }
+    catch(err){
+      alert('Erro:' + err);
+    }
+  }
+
   return(
     <div className="App-list">
     <header>
-    <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
+    <button type="submit" onClick={handleLogout}>Logout</button>
     </header>
       <img src={ReunionImg} alt="Workstations" width="320"/>
       <h1>Salas de reunião disponíveis:</h1>

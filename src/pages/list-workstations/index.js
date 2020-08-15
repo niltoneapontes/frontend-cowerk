@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ListImg from '../../assets/list.svg'
 
 import api from '../../services/api';
@@ -7,6 +7,7 @@ import api from '../../services/api';
 export default function ListWorkstation() {
 
   const [workstations, setWorkstations] = useState([]);
+  const history = useHistory();
 
   api.get('/workstations').then(res => setWorkstations(res.data)).catch(err => console.error(err))
 
@@ -21,10 +22,20 @@ export default function ListWorkstation() {
     }
   }
 
+  async function handleLogout(){
+    try{
+      localStorage.clear();
+      history.push('/')
+    }
+    catch(err){
+      alert('Erro:' + err);
+    }
+  }
+
   return(
     <div className="App-list">
     <header>
-      <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
+      <button type="submit" onClick={handleLogout}>Logout</button>
     </header>
       <img src={ListImg} alt="Workstations" width="320"/>
       <h1>Workstations disponíveis:</h1>

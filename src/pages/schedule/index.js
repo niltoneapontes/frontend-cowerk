@@ -1,13 +1,26 @@
 import React from 'react';
 import { TextField, Input } from '@material-ui/core';
 import scheduleImg from '../../assets/schedule.svg';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Signup() {
+
+  const history = useHistory();
+
+  async function handleLogout(){
+    try{
+      localStorage.clear();
+      history.push('/')
+    }
+    catch(err){
+      alert('Erro:' + err);
+    }
+  }
+
   return(
     <div className="App">
     <header>
-      <Link className="button-link" to="/"><button type="submit">Logout</button></Link>
+      <button type="submit" onClick={handleLogout}>Logout</button>
     </header>
       <div className="container">
         <h1>Faça seu agendamento</h1>

@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import homeimg from '../../assets/home.svg';
 import { Link, useHistory } from 'react-router-dom';
-// import bcrypt from 'bcrypt';
 
 import api from '../../services/api';
 
 
 export default function Signin(){
+
+  localStorage.clear();
+
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +27,13 @@ export default function Signin(){
     }
 
     try{
-        await api.post('/', data).then(res => res.data.isAdmin ? history.push('/admin') : history.push('/reunions'));
+        await api.post('/', data).then(res =>
+          res.data.isAdmin ?
+          (
+            localStorage.setItem('isAdmin', res.data.isAdmin),
+            history.push('/admin')
+          )
+          : history.push('/reunions'));
     }
     catch(err){
         alert('Usuário e/ou senha incorretos. 😐');
