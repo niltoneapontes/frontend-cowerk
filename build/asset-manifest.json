@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2b24906a.chunk.css",
+    "main.js": "/static/js/main.d96c9814.chunk.js",
+    "main.js.map": "/static/js/main.d96c9814.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c8a21426.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c8a21426.js.map",
+    "static/js/2.458f7acd.chunk.js": "/static/js/2.458f7acd.chunk.js",
+    "static/js/2.458f7acd.chunk.js.map": "/static/js/2.458f7acd.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c010c621e77657c650dd5e7604c1c917.js": "/precache-manifest.c010c621e77657c650dd5e7604c1c917.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.2b24906a.chunk.css.map": "/static/css/main.2b24906a.chunk.css.map",
+    "static/js/2.458f7acd.chunk.js.LICENSE.txt": "/static/js/2.458f7acd.chunk.js.LICENSE.txt",
+    "static/media/home.svg": "/static/media/home.37f88678.svg",
+    "static/media/list.svg": "/static/media/list.6e31edff.svg",
+    "static/media/reunion.svg": "/static/media/reunion.f2f703a1.svg",
+    "static/media/schedule.svg": "/static/media/schedule.0aca04b3.svg",
+    "static/media/users.svg": "/static/media/users.62ed0e29.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8a21426.js",
+    "static/js/2.458f7acd.chunk.js",
+    "static/css/main.2b24906a.chunk.css",
+    "static/js/main.d96c9814.chunk.js"
+  ]
+}
