@@ -13,4 +13,6 @@ https://cowerk.netlify.app/
 # Utilizando o back-end
 Para utilizar esta aplicação é necessário realizar um "git clone" e em seguida rodar o comando "npm install" para instalar as dependências necessárias. Em seguida, utilize o comando "npm start" para iniciar o servidor.
 
-# Vídeo da aplicação
+# GIF da aplicação
+
+[![GIF Cowerk](https://github.com/niltoneapontes/frontend-cowerk/blob/master/output.gif)](https://github.com/niltoneapontes/frontend-cowerk/blob/master/output.gif)
